@@ -1,26 +1,21 @@
 package com.example.hibernate.model.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import java.io.Serializable;
 
-
 @Data
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-public class Persons implements Serializable {
-
-    @EmbeddedId
-    private PersonId personId;
+@Embeddable
+public class PersonId implements Serializable {
+    private String name;
     @Column(nullable = false)
-    private String phone_number;
+    private String surname;
     @Column(nullable = false)
-    private String city_of_living;
-
+    private int age;
 }
