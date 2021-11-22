@@ -1,4 +1,4 @@
-package com.example.hibernate.repository;
+/*package com.example.hibernate.repository;
 
 import com.example.hibernate.model.entity.Persons;
 import org.springframework.stereotype.Repository;
@@ -20,4 +20,4 @@ public class HibernateRepository {
                 .setParameter("city", city)
                 .getResultList();
     }
-}
+}*/

@@ -19,8 +19,8 @@ public class Persons implements Serializable {
     @EmbeddedId
     private PersonId personId;
     @Column(nullable = false)
-    private String phone_number;
+    private String phoneNumber;
     @Column(nullable = false)
-    private String city_of_living;
+    private String cityOfLiving;
 
 }
