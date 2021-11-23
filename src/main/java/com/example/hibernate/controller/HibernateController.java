@@ -3,6 +3,7 @@ package com.example.hibernate.controller;
 
 import com.example.hibernate.model.entity.Persons;
 import com.example.hibernate.repository.PersonsRepository;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,17 @@ public class HibernateController {
         this.personsRepository = personsRepository;
     }
 
+    @GetMapping("/hello")
+    public String getGreetings() {
+        return "Hello from PersonsDB.";
+    }
+
+    @GetMapping("/goodbye")
+    public String getParting() {
+        return "Goodbye from PersonsDB, " +
+                SecurityContextHolder.getContext().getAuthentication().getName() + "!!!";
+    }
+
     @GetMapping("/persons/by-city")
     public List<Persons> getPersonsByCity(@RequestParam("city") String city) {
         return personsRepository.findByCityOfLiving(city);
@@ -29,7 +41,7 @@ public class HibernateController {
         return personsRepository.findByPersonIdAgeLessThanOrderByPersonIdAge(age);
     }
 
-    @GetMapping("/person/TheSpecifiedNameAndSurname")
+    @GetMapping("/persons/TheSpecifiedNameAndSurname")
     public Persons getPersonTheSpecifiedNameAndSurname(@RequestParam("name") String name,
                                                                  @RequestParam("surname") String surname) {
         Persons person = personsRepository.findByPersonIdNameAndPersonIdSurname(name, surname)
